@@ -17,6 +17,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\AspireFunctionsClient\AspireFunctionsClient.csproj" />
       <ProjectReference Include="..\EmailPublisherFunction\EmailPublisherFunction.csproj" />
     </ItemGroup>
 

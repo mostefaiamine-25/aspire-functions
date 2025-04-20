@@ -1,0 +1,33 @@
+﻿@using AspireFunctions.Contracts
+@using Azure.Storage.Queues
+@using System.Text.Json
+
+@inject QueueServiceClient Queues
+
+@page "/"
+
+
+
+<PageTitle>Home</PageTitle>
+
+<h1>Send en email</h1>
+
+<p><label>To :</label><input type="text" @bind-value="_emailMessage.To"/></p>
+<p><label>Body :</label><input type="text" @bind-value="_emailMessage.Body" /></p>
+<p><button @onclick="SendEmail">Send</button></p>
+
+@code{
+
+	private EmailMessage _emailMessage = new() { Body = string.Empty, To = string.Empty };
+
+	private async Task SendEmail()
+	{
+		var queue = Queues.GetQueueClient("emails");
+
+		await queue.CreateIfNotExistsAsync();
+
+		var message = JsonSerializer.Serialize(_emailMessage);
+
+		await queue.SendMessageAsync(message);
+	}
+}

@@ -5,8 +5,7 @@ using Microsoft.Extensions.Logging;
 namespace EmailPublisherFunction;
 
 public class EmailFunction(ILogger<EmailFunction> logger)
-{
-   
+{   
 
     [Function(nameof(EmailFunction))]
     public void Run([QueueTrigger("emails")] EmailMessage message)

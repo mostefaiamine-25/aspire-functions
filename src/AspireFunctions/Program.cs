@@ -7,7 +7,7 @@ var storage = builder.AddAzureStorage("storage")
 
 var queues = storage.AddQueues("Queues");
 
-var functions = builder
+builder
     .AddAzureFunctionsProject<EmailPublisherFunction>("EmailFunction")
     .WithExternalHttpEndpoints()
     .WithHostStorage(storage)

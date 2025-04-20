@@ -7,19 +7,19 @@
 One of the newest - and the nicest - additions to .NET Aspire is the ability to include Azure Functions to the orchestration and access the Azure function in the dashboard as any other resource.
 
 # Architecture
-The solutions relies on a minimal architecture where a client application written using Blazor server publishes a queue message (a serialized email) that the azure function will pick to send it (sending is just a log message here). 
+The solution relies on a minimal architecture where a client application written using Blazor Server publishes a queue message (a serialized email) that the Azure Function will pick and send (sending is just a log message here). 
 
 ![architecture](/images/architecture.png)
 
-# Making it work
+# Making it Work
 ## The Client
 ### Configuring the Queue
-The host builder should be configure to provide the ```QueueServiceClient``` to the consuming pages and/or services. For this, in the Program.cs, we should do the following:
+The host builder should be configured to provide the ```QueueServiceClient``` to the consuming pages and/or services. For this, in the Program.cs, we should do the following:
 ```cs
 builder.AddAzureQueueClient("Queues")
 ```
 This means the ```QueueServiceClient``` is added to DI. 
-However, we will have a problem, when publishing to the queue, the azure function will not be able to read the message because it expect the messages to be **base64** encoded.
+However, we will have a problem: when publishing to the queue, the azure function will not be able to read the message because it expects the messages to be **base64** encoded.
 
 To fix this problem, we will change the queue bootstrapping as follows:
 ```cs
@@ -66,8 +66,6 @@ var builder = FunctionsApplication.CreateBuilder(args);
 builder.AddServiceDefaults();
 ```
 
-We are done now with the function.
-
 ## The Host
 The host should setup the following components:
 - The storage
@@ -87,9 +85,9 @@ var storage = builder.AddAzureStorage("storage")
 var queues = storage.AddQueues("Queues");
 ```
 
-The ```AddAzureStorage``` method adds the storage service to the orhechestration. This call: ```storage.AddQueues("Queues")``` means that we add a queue service explicitly that will provide the connection string through the key **Queues**.
+The ```AddAzureStorage``` method adds the storage service to the orhechestration. This call: ```storage.AddQueues("Queues")``` means that we add a queue service that will provide the connection string through the key **Queues**.
 
-The ```.RunAsEmulator()``` use the emulated version of azure storage instead of a concreate storage account. Of course, this code should not be used in production.
+The ```.RunAsEmulator()``` uses the emulated version of azure storage instead of a concrete storage account. Of course, this code should not be used in production.
 
 ### The Function
 Now, the host should add the azure function as a resource. Each resource can have a dependency, in our case, the function should wait for the queue to be running and use the storage for function storage.
@@ -119,13 +117,13 @@ The resource list is displayed as follows:<br/>
 
 ![architecture](/images/resource-list.png)
 
-We can see clearly the three resources that we are using (client, function and storage + queues).
+We can see clearly the three resources that we are using (client, function, and storage + queues).
 
-The 9.2 of Aspire has a very nice addition which is the resource graph which an awesome way to illustrate the dependencies: <br/>
+The 9.2 of Aspire has a very nice addition which is the resource graph, an awesome way to illustrate the dependencies: <br/>
 
 ![graph](/images/resource-graph.png)
 
-Aspire uses docker containers to run certain resources such as the azure emulator. If you run ```docker ps``` in your terminal, you can see the azure emulator container running:<br/>
+Aspire uses Docker containers to run certain resources such as the Azure emulator. If you run ```docker ps``` in your terminal, you can see the Azure emulator container running:<br/>
 
 ![docker](/images/docker-ps.png)
 

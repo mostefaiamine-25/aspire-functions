@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireFunctions", "AspireFunctions\AspireFunctions.csproj", "{31C5C272-7850-459C-A183-D047054D4F78}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppServiceDefaults", "AppServiceDefaults\AppServiceDefaults.csproj", "{EA74425E-B0C1-47DC-865D-AAD9E9C1DDAA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailPublisherFunction", "EmailPublisherFunction\EmailPublisherFunction.csproj", "{795C7314-1CAB-443C-AFE6-A16F8724F354}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{31C5C272-7850-459C-A183-D047054D4F78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31C5C272-7850-459C-A183-D047054D4F78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31C5C272-7850-459C-A183-D047054D4F78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31C5C272-7850-459C-A183-D047054D4F78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA74425E-B0C1-47DC-865D-AAD9E9C1DDAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA74425E-B0C1-47DC-865D-AAD9E9C1DDAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA74425E-B0C1-47DC-865D-AAD9E9C1DDAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA74425E-B0C1-47DC-865D-AAD9E9C1DDAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{795C7314-1CAB-443C-AFE6-A16F8724F354}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{795C7314-1CAB-443C-AFE6-A16F8724F354}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{795C7314-1CAB-443C-AFE6-A16F8724F354}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{795C7314-1CAB-443C-AFE6-A16F8724F354}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

@@ -367,5 +367,4 @@ FodyWeavers.xsd
 **/*.DS_Store
 
 # launch settings
-**/*/launchSettings.json
 **/*/.idea/*
